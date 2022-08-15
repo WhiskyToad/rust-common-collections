@@ -27,6 +27,26 @@ fn median( numbers: &mut [i32]) -> i32 {
         return numbers[median_index - 1];
 }
 
+fn convert_to_pig_latin(word: &str) -> String {
+
+    fn is_vowel(c: char) -> bool {
+        c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+    }
+
+    let mut s = String::from(word);
+    let initial_letter = s.remove(0);
+
+    if is_vowel(initial_letter) {
+        s.push_str("-hay")
+    } else {
+        s.push(initial_letter);
+        s.push_str("-ay")
+    }
+
+    s
+    
+}
+
 fn main() {
     let mut int_list = vec!(1,2,5,4,7,5,1,7,6,51,15, 5);
     
@@ -35,4 +55,7 @@ fn main() {
     println!("Median is: {}", median(&mut int_list));
     println!("Mode is: {}", mode(&int_list));
 
+    println!("Pig Latin toad is: {}", convert_to_pig_latin("toad"));
+    println!("Pig Latin cheese is: {}", convert_to_pig_latin("cheese"));
+    println!("Pig Latin apple is: {}", convert_to_pig_latin("apple"));
 }
