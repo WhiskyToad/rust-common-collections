@@ -37,14 +37,14 @@ fn convert_to_pig_latin(word: &str) -> String {
     let initial_letter = s.remove(0);
 
     if is_vowel(initial_letter) {
-        s.push_str("-hay")
+        let mut t = String::from(word);
+        t.push_str("-hay");
+        return t
     } else {
         s.push(initial_letter);
         s.push_str("-ay")
     }
-
     s
-    
 }
 
 fn main() {
